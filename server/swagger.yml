@@ -34,23 +34,36 @@ paths:
                 timestamp:
                   type: "string"
 #API Laumio
-  /laumio/rainbowAll:
+  ## FONCTIOn : RAINBOW #########################
+  # rainbow All
+  /laumio/all/rainbow:
     get:
       operationId: "api.laumio.rainbowAll"
       tags:
         - "Laumio"
-      summary: "The people data structure supported by the server application"
-      description: "Read the list of people"
+      summary: "Lampe Laumio à leds multiples"
+      description: "Animation arc-en-ciel sur toutes les lampes Laumios"
       responses:
         200:
-          description: "Successful read people list operation"
+          description: "Animation success"
           schema:
-            type: "array"
-            items:
-              properties:
-                fname:
-                  type: "string"
-                lname:
-                  type: "string"
-                timestamp:
-                  type: "string"
+            type: "string"
+  # rainbow One
+  /laumio/{nom}/rainbow:
+    get:
+      operationId: "api.laumio.rainbow"
+      tags:
+        - "Laumio"
+      summary: "Lampe Laumio à leds multiples"
+      description: "Animation arc-en-ciel sur une lampe Laumio"
+      parameters:
+        - name: nom
+          in: path
+          description: Nom de la lampe Laumio à animer
+          type: string
+          required: True
+      responses:
+        200:
+          description: "Animation success"
+          schema:
+            type: "string"
