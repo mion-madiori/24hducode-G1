@@ -9,14 +9,21 @@ let client = mqtt.connect({
 client.on('connect', () => {
     console.log('connected');
 
-    client.publish(`laumio/status/advertise`)
+    client.subscribe(`laumio/status/advertise`)
 
-    client.subscribe(`laumio/all/discover`);
-    client.publish(`/laumio/all/animate_rainbow`);
+    // setInterval(() => {
+    //     client.publish(`laumio/all/animate_rainbow`)
+    // }, 2000);
+
+    // client.publish(`laumio/all/discover`);
+    
+    client.publish("laumio/all/fill", JSON.stringify({
+        command: 'fill',
+        rgb: [200, 200, 50]
+      }));
 
 })
 
-client.on('message', (msg) => {
-    console.log(`message: ${msg}`);
-    
+client.on('message', (topic, msg) => {
+    console.log(`${msg.toString()}`);
 })
