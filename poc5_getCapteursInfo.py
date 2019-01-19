@@ -39,7 +39,9 @@ def on_message(client, userdata, msg):
                 client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill', 'rgb': [50, 50, 255]}")
         elif str(msg.topic) == "distance/value":
             val = str(pseudo_byte_to_int(msg.payload) * 63)
+            print(val)
             high_val = str(pseudo_byte_to_int(msg.payload) * 127)
+            print(high_val)
             payload = "{'command': 'fill', 'rgb': [" + val + ", " + val + ", " + high_val + "]}"
             client.publish("laumio/Laumio_OFC168/json", payload=payload)
 
