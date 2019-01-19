@@ -1,4 +1,5 @@
 import paho.mqtt.client as mqtt
+import time
 
 
 def on_connect(client, user_data, flags, rc):
@@ -6,8 +7,7 @@ def on_connect(client, user_data, flags, rc):
 
     client.publish("laumio/status/advertise")
 
-    client.subscribe("laumio/all/discover")
-    client.publish("/laumio/all/animate_rainbow")
+    client.subscribe("laumio/Laumio_10805F/discover")
 
 
 def on_message(client, userdata, msg):
@@ -22,6 +22,12 @@ client.connect("mpd.lan", 1883, 60)
 
 client.subscribe("laumio/status/advertise")
 
-client.publish("laumio/all/animate_rainbow")
+client.publish("laumio/Laumio_10805F/animate_rainbow")
+time.sleep(3)
+client.publish("laumio/Laumio_10805F/animate_rainbow")
+time.sleep(3)
+client.publish("laumio/Laumio_10805F/animate_rainbow")
+time.sleep(3)
+client.publish("laumio/Laumio_10805F/animate_rainbow")
 
 client.loop_forever()
