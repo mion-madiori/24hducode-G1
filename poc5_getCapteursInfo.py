@@ -5,7 +5,7 @@ def pseudo_byte_to_int(byte_value):
     str_value = ""
 
     for char in str(byte_value):
-        if char not in ['b','\'']:
+        if char not in ['b', '\'']:
             str_value += char
 
     return float(str_value)
@@ -21,7 +21,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe("atmosphere/temperature")
     client.subscribe("distance/value")
 
-    client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill','rgb': [255, 0, 255]}")
+    client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill','rgb': [0, 0, 255]}")
 
 
 def on_message(client, userdata, msg):
@@ -30,16 +30,16 @@ def on_message(client, userdata, msg):
         if str(msg.topic) == "atmosphere/temperature":
             print(type(msg.payload))
             print(pseudo_byte_to_int(msg.payload))
-            if pseudo_byte_to_int(msg.payload) >= 25:
+            if pseudo_byte_to_int(msg.payload) >= 30:
                 print("coucou")
                 client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill', 'rgb': [255, 50, 50]}")
-            elif pseudo_byte_to_int(msg.payload) < 25 and pseudo_byte_to_int(msg.payload) >= 10:
+            elif pseudo_byte_to_int(msg.payload) < 30 and pseudo_byte_to_int(msg.payload) >= 20:
                 client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill', 'rgb': [255, 120, 120]}")
             elif pseudo_byte_to_int(msg.payload) < 10:
                 client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill', 'rgb': [50, 50, 255]}")
         elif str(msg.topic) == "distance/value":
             val = str(pseudo_byte_to_int(msg.payload) * 63)
-            high_val = str(pseudo_byte_to_int(msg.payload * 127))
+            high_val = str(pseudo_byte_to_int(msg.payload) * 127)
             payload = "{'command': 'fill', 'rgb': [" + val + ", " + val + ", " + high_val + "]}"
             client.publish("laumio/Laumio_OFC168/json", payload=payload)
 

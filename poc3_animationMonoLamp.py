@@ -24,10 +24,10 @@ client.subscribe("laumio/status/advertise")
 
 client.publish("laumio/Laumio_10805F/animate_rainbow")
 time.sleep(3)
-client.publish("laumio/Laumio_10805F/animate_rainbow")
+client.publish("laumio/Laumio_10805F/fill", payload="{'command': 'fill','rgb': [255, 0, 255]}")
 time.sleep(3)
 client.publish("laumio/Laumio_10805F/animate_rainbow")
 time.sleep(3)
-client.publish("laumio/Laumio_10805F/animate_rainbow")
+client.publish("laumio/Laumio_10805F/fill", payload="{'command': 'fill','rgb': [255, 0, 255]}")
 
 client.loop_forever()
