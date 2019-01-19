@@ -1,0 +1,17 @@
+.sphere{
+    .thissphere{
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 2px solid black;
+    }
+
+    .id, .color{
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .id{
+        font-weight: bold;
+    }
+}

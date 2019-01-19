@@ -1,0 +1,10 @@
+.laumolist{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    app-radialmenu{
+        width: 100%;
+    }
+}
