@@ -7,7 +7,6 @@ def on_connect(client, user_data, flags, rc):
     client.publish("laumio/status/advertise")
 
     client.subscribe("laumio/all/discover")
-    client.publish("/laumio/all/animate_rainbow")
 
 
 def on_message(client, userdata, msg):

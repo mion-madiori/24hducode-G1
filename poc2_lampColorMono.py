@@ -6,8 +6,10 @@ def on_connect(client, user_data, flags, rc):
 
     client.publish("laumio/status/advertise")
 
-    client.subscribe("laumio/all/discover")
-    client.publish("/laumio/all/animate_rainbow")
+    # Connexion
+    client.subscribe("laumio/Laumio_10805F/discover")
+    
+    
 
 
 def on_message(client, userdata, msg):
@@ -20,8 +22,10 @@ client.on_message = on_message
 
 client.connect("mpd.lan", 1883, 60)
 
-client.subscribe("laumio/status/advertise")
-
-client.publish("laumio/all/animate_rainbow")
-
+# Execution
+#client.publish("/laumio/NNAAMMEE/color_wipe", "00 80 00 1000")
+#client.publish("/laumio/Laumio_10805F/fill", "00 80 00")
+client.publish("/laumio/Laumio_10805F/animate_rainbow")
+#client.publish("/laumio/Laumio_10805F/fill", "0000FF")
+1
 client.loop_forever()
