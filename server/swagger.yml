@@ -34,7 +34,7 @@ paths:
                 timestamp:
                   type: "string"
 #API Laumio
-  ## FONCTIOn : RAINBOW #########################
+  ## FONCTION : RAINBOW #########################
   # rainbow All
   /laumio/all/rainbow:
     get:

@@ -22,11 +22,10 @@ def createClient():
 
 # API - Animation arc-en-ciel sur une lampe Laumio
 def rainbow(nom):
+    # Création et connexion du client
     client = createClient()
-    client = mqtt.Client()
-    client.on_connect = on_connect
-    client.on_message = on_message
     client.connect(adresseMpd, portMdp, keepAlive)
+    # Exécution du script
     client.publish("laumio/" + nom + "/animate_rainbow")
     
 
