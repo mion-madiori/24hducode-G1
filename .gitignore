@@ -1,2 +1,2 @@
-versionJS/node_modules
-.vscode
+/versionJS/node_modules
+/.vscode
