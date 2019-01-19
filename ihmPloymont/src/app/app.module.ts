@@ -12,13 +12,13 @@ import { LaumioListComponent } from './laumio-list/laumio-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LaumioListComponent
+    LaumioListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
