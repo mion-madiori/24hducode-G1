@@ -18,10 +18,10 @@ def on_connect(client, userdata, flags, rc):
 
     print("Liste des laumios :")
     client.publish("laumio/all/discover")
-    client.subscribe("atmosphere/temperature")
+    # client.subscribe("atmosphere/temperature")
     client.subscribe("distance/value")
 
-    client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill','rgb': [0, 0, 255]}")
+    # client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill','rgb': [0, 0, 255]}")
 
 
 def on_message(client, userdata, msg):
@@ -38,13 +38,12 @@ def on_message(client, userdata, msg):
             elif pseudo_byte_to_int(msg.payload) < 10:
                 client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill', 'rgb': [50, 50, 255]}")
         elif str(msg.topic) == "distance/value":
-            val = str(pseudo_byte_to_int(msg.payload) * 63)
-            print(val)
-            high_val = str(pseudo_byte_to_int(msg.payload) * 127)
-            print(high_val)
-            payload = "{'command': 'fill', 'rgb': [" + val + ", " + val + ", " + high_val + "]}"
-            client.publish("laumio/Laumio_OFC168/json", payload=payload)
-
+            sec_color = int(255 - pseudo_byte_to_int(msg.payload) * 127)
+            print(sec_color)
+            main_color = int(255 - pseudo_byte_to_int(msg.payload) * 43)
+            print(main_color)
+            print("{'command': 'fill', 'rgb': [" + str(sec_color) + ", " + str(sec_color) + ", " + str(main_color) + "]}")
+            client.publish("laumio/Laumio_0FC168/json", payload="{'command': 'fill', 'rgb': [0, " + str(main_color) + ", " + str(main_color) + "]}")
 
     except Exception as e:
         print("Oupsi, error detected: " + repr(e))

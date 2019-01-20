@@ -1,0 +1,8 @@
+<div class="sphere">
+  <div class="thissphere" [style.background-color]="color" [cpPosition]="'bottom'" [cpPositionOffset]="'50%'"
+    [cpPositionRelativeToArrow]="true" [(colorPicker)]="color" (colorPickerChange)='onColorChange($event)'></div>
+
+  <div class="id">{{id}}</div>
+
+  <div class='color' *ngIf="currentColor != null">{{currentColor | json}}</div>
+</div>
