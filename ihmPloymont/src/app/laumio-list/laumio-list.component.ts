@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../service/http.service';
+import { Subscription } from 'rxjs';
+import { Laumio } from '../model/laumio';
 
 @Component({
   selector: 'app-laumio-list',
@@ -9,6 +11,10 @@ import { HttpService } from '../service/http.service';
 export class LaumioListComponent implements OnInit {
 
   laumios: Array<any>;
+  laumio: Laumio;
+  checkPower : boolean;
+
+  sub: Subscription;
 
   constructor(private httpService: HttpService) { }
 
@@ -18,5 +24,20 @@ export class LaumioListComponent implements OnInit {
       console.log(data);      
     })
   }
+  
+  powerOnLaumio(name: string) {
+    this.httpService.powerOnLaumio(name).subscribe(error => {
+      console.error(error);
+    })
+  }
 
+  powerOffLaumio(name: string) {
+    this.httpService.powerOffLaumio(name).subscribe(error => {
+      console.error(error);
+    })
+  }
+
+  changeColor(name: string ) {
+    this.httpService.changeColor(name)
+  }
 }
