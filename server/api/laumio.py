@@ -73,7 +73,7 @@ def power_laumio(laumios, state=False):
 #client.publish("laumio/status/advertise")
 
 #client.subscribe("laumio/all/discover")
-def discover():
+def allLaumios():
     client = createClient()
     client.subscribe("laumio/status/advertise")
     client.publish("laumio/all/discover")
