@@ -22,13 +22,15 @@ import { HttpService} from './service/http.service'
 import { LaumioListComponent } from './laumio-list/laumio-list.component';
 import { SphereComponent } from './sphere/sphere.component';
 import { AnimationComponent } from './animation/animation.component';
+import { MeteoComponent } from './meteo/meteo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LaumioListComponent,
     SphereComponent,
-    AnimationComponent
+    AnimationComponent,
+    MeteoComponent
   ],
   imports: [
     BrowserModule,

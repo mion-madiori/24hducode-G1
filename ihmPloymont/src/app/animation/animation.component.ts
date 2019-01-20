@@ -17,7 +17,7 @@ export class AnimationComponent implements OnInit {
   colorb2;
 
   name = 'Laumio_0FPFPF';
-  interval = 0;
+  interval = 2;
 
   constructor(
     private http: HttpService
