@@ -4,6 +4,9 @@ adresseMpd = "mpd.lan"
 portMdp = 1883
 keepAlive = 60
 
+######################
+# FONCTION GENERIQUE #
+######################
 
 # Fonction d'écoute après connexion
 def on_connect(client, user_data, flags, rc):
@@ -20,6 +23,10 @@ def createClient():
     client.on_message = on_message
     return client
 
+###################
+# FONCTIONS d'API #
+###################
+
 # API - Animation arc-en-ciel sur une lampe Laumio
 def rainbow(nom):
     # Création et connexion du client
@@ -32,6 +39,14 @@ def rainbow(nom):
 # API - Animation arc-en-ciel sur toutes les lampes
 def rainbowAll():
     rainbow("all")
+
+# API - Animation arc-en-ciel sur une lampe Laumio
+def fill(nom, couleur):
+    # Création et connexion du client
+    client = createClient()
+    client.connect(adresseMpd, portMdp, keepAlive)
+    # Exécution du script
+    client.publish("laumio/" + nom + "/fill")
 
 #client.publish("laumio/status/advertise")
 

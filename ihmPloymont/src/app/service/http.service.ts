@@ -7,14 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class HttpService {
 
-  public API = 'http://laumio_0fbfbf/api/';
-  public LAUMIOS_API = this.API + '/laumio';
+  public API = '//localhost:5000';
+  public LAUMIOS_API = this.API + '/api/laumio';
 
   constructor(private http: HttpClient) {
    }
 
    getAll(): Observable<any> {
-     return this.http.get(this.API);
+     return this.http.get(this.LAUMIOS_API + '/all/rainbow');
    }
 
    getByName(name: string) {
