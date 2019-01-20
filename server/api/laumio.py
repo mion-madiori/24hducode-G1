@@ -20,6 +20,7 @@ def createClient():
     client.on_message = on_message
     return client
 
+
 # API - Animation arc-en-ciel sur une lampe Laumio
 def rainbow(nom):
     client = createClient()
