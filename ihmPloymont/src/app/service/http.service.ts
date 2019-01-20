@@ -17,10 +17,6 @@ export class HttpService {
      return this.http.get(this.LAUMIOS_API + '/all/rainbow');
    }
 
-   getByName(name: string) {
-     return this.http.get(this.LAUMIOS_API + '/' + name);
-   }  
-
    powerLaumio(laumio: any): Observable<any> {
     let result: Observable<Object>;
     if (laumio['href']) {
