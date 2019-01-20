@@ -23,7 +23,7 @@ export class HttpService {
   }
 
   powerOnLaumio(sphere: Sphere): Observable<any> {
-    return this.http.post(this.LAUMIOS_API + '/' + sphere.name + 'powerOnLaumio', sphere.color);
+    return this.http.post('http://192.168.0.161:5000/fill', sphere);
   }
 
   powerOffLaumio(name: string): Observable<any> {
