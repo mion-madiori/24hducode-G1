@@ -34,7 +34,7 @@ paths:
                 timestamp:
                   type: "string"
 #API Laumio
-  ## FONCTIOn : RAINBOW #########################
+  ## FONCTION : RAINBOW #########################
   # rainbow All
   /laumio/all/rainbow:
     get:
@@ -62,6 +62,19 @@ paths:
           description: Nom de la lampe Laumio à animer
           type: string
           required: True
+      responses:
+        200:
+          description: "Animation success"
+          schema:
+            type: "string"
+  # All Laumios
+  /laumio/names:
+    get:
+      operationId: "api.laumio.allLaumios"
+      tags:
+        - "Laumio"
+      summary: "Lampe Laumio à leds multiples"
+      description: "Retourne les noms des Laumios"
       responses:
         200:
           description: "Animation success"
