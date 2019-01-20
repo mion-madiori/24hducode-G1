@@ -35,10 +35,10 @@ def createClient():
 
 # API - Animation arc-en-ciel sur toutes les lampes
 def rainbowAll():
-    rainbowGroupe("all")
+    rainbowGroup("all")
 
 # API - Animation arc-en-ciel sur une ou plusieurs lampes Laumio
-def rainbowGroupe(laumios):
+def rainbowGroup(laumios):
     client = createClient()
     client.connect(adresseMpd, portMdp, keepAlive)
 
@@ -55,6 +55,16 @@ def fill(nom, couleur):
     client.connect(adresseMpd, portMdp, keepAlive)
     # Exécution du script
     client.publish("laumio/" + nom + "/json", payload="{'command': 'fill', 'rgb': " + couleur + "}")
+
+def fillGroup(laumios):
+    client = createClient()
+    client.connect(adresseMpd, portMdp, keepAlive)
+
+    if isinstance(laumios, list):
+        for laumio in laumios:
+            client.publish("laumio/" + laumio.name + "/json", payload="{'command': 'fill', 'rgb': " + laumio.couleur + "}")
+    else:
+        client.publish("laumio/" + laumios.name + "/json", payload="{'command': 'fill', 'rgb': " + laumios.couleur + "}")
 
 # API - Remplissage couleur sur toutes les lampes
 def fillAll(couleur):
