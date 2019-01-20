@@ -1,0 +1,21 @@
+<div class="animation">
+  <mat-form-field>
+    <mat-select placeholder="Lampe" [(ngModel)]='name'>
+      <mat-option *ngFor="let sphere of listSphere" [value]="sphere.name">
+        {{sphere.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>Alterner les couleurs</p>
+  <input [(colorPicker)]="color1" [style.background]="color1" (colorPickerChange)='onColor1Change($event)'/>
+  <p> et </p>
+  <input [(colorPicker)]="color2" [style.background]="color2" (colorPickerChange)='onColor2Change($event)'/>
+
+  <p>dans une intervalle de </p>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="en seconde" type="number" [(ngModel)]='interval'>
+  </mat-form-field>
+  
+  <button mat-raised-button color="primary" (click)='valid()'>Valider</button>
+  <button mat-raised-button color="alert" (click)='clear()'>Annuler</button>
+</div>
