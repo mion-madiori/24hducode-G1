@@ -31,7 +31,10 @@ export class SphereComponent implements OnInit {
       }
     };
     console.log(this.sphere);
-    this.httpService.powerOnLaumio(this.sphere);
+    this.httpService.powerOnLaumio(this.sphere).subscribe(data => {
+      console.log(data);
+
+    });
   }
 
   private hexToRgb(hex) {
