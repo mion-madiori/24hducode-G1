@@ -49,18 +49,37 @@ paths:
           schema:
             type: "string"
   # rainbow One
-  /laumio/{nom}/rainbow:
+  /laumio/{laumios}/rainbow:
     get:
-      operationId: "api.laumio.rainbow"
+      operationId: "api.laumio.rainbowGroupe"
       tags:
         - "Laumio"
       summary: "Lampe Laumio à leds multiples"
       description: "Animation arc-en-ciel sur une lampe Laumio"
       parameters:
-        - name: nom
+        - name: laumios
           in: path
           description: Nom de la lampe Laumio à animer
           type: string
+          required: True
+      responses:
+        200:
+          description: "Animation success"
+          schema:
+            type: "string"
+  # rainbow Group
+  /laumio/group/rainbow:
+    get:
+      operationId: "api.laumio.rainbowGroup"
+      tags:
+        - "Laumio"
+      summary: "Lampe Laumio à leds multiples"
+      description: "Animation arc-en-ciel sur une lampe Laumio"
+      parameters:
+        - name: laumios
+          in: body
+          description: array Laumio composé d'une liste des noms à animer
+          type: array
           required: True
       responses:
         200:
@@ -111,6 +130,41 @@ paths:
           description: "Fill success"
           schema:
             type: "string"
+  # fill Group
+  /laumio/group/fill:
+    post:
+      operationId: "api.laumio.fill"
+      tags:
+        - "Laumio"
+      summary: "Lampe Laumio à leds multiples"
+      description: "Remplissage avec une couleur sur une lampe Laumio"
+      parameters:
+        - name: nom
+          in: path
+          description: Nom de la lampe Laumio à remplir
+          type: string
+          required: True
+        - name: couleur
+          in: body
+          description: Couleur RGB à afficher dans les Laumios, au format {couleur = [R, G, B]} dans JSon
+          type: array
+          required: True
+      responses:
+        200:
+          description: "Fill success"
+          schema:
+            type: "string"
+
+            type: object
+          properties:
+              nom:
+                type: string
+                description: nom du Laumio
+              couleur:
+                type: array
+                description: couleur [R, G, B] à affecter
+          required: True
+  ## FONCTION : ALL NAME #########################
   # All Laumios
   /laumio/names:
     get:
