@@ -43,7 +43,7 @@ def power():
 @app.route('/weather', methods=["POST"])
 def weather():
     laumio_color = []
-    weather = requests.get("api.openweathermap.org/data/2.5/weather?q="+request.get_json()["city"]+"&appid=8cb904d3cd0bc9019a4515f0626d916d")["weather"]["main"]
+    weather = requests.get("api.openweathermap.org/data/2.5/weather?q="+request.get_json()["city"]+"&appid=8cb904d3cd0bc9019a4515f0626d916d").json()["weather"][0]["main"]
     if weather in ["Fog", "Rain", "Mist"]:
         laumio_color = [50, 50, 150]
     elif weather in ["Cloudy"]:
