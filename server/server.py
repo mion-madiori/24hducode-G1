@@ -15,14 +15,27 @@ def hello():
     return jsonify({'success': True})
 
 
-@app.route('/rainbow')
+@app.route('/rainbow', methods=["POST"])
 def rainboww():
-    rainbow(request)
+    rainbow(request.get_json().name)
+    return jsonify(request.get_json())
 
 
 @app.route('/rainbows')
 def rainbows():
     rainbowAll()
+
+
+@app.route('/fill', methods=["POST"])
+def fillz():
+
+    print(request.get_json())
+    fill(request.get_json()["name"], request.get_json()["color"])
+    return jsonify(request.get_json())
+
+@app.route('/power', methods=["POST"])
+def power():
+    power_laumio(request.get_json()["name"], request.get_json()["state"])
 
 
 # Création d'une route URl dans l'application pour "/"
