@@ -33,18 +33,20 @@ def createClient():
 # FONCTIONS d'API #
 ###################
 
-# API - Animation arc-en-ciel sur une lampe Laumio
-def rainbow(nom):
-    # Création et connexion du client
-    client = createClient()
-    client.connect(adresseMpd, portMdp, keepAlive)
-    # Exécution du script
-    client.publish("laumio/" + nom + "/animate_rainbow")
-    
-
 # API - Animation arc-en-ciel sur toutes les lampes
 def rainbowAll():
-    rainbow("all")
+    rainbowGroupe("all")
+
+# API - Animation arc-en-ciel sur une ou plusieurs lampes Laumio
+def rainbowGroupe(laumios):
+    client = createClient()
+    client.connect(adresseMpd, portMdp, keepAlive)
+
+    if isinstance(laumios, list):
+        for laumio in laumios:
+            client.publish("laumio/" + laumio + "/animate_rainbow")
+    else:
+        client.publish("laumio/" + laumios + "/animate_rainbow")
 
 # API - Remplissage couleur sur une lampe Laumio
 def fill(nom, couleur):
