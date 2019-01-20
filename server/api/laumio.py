@@ -63,8 +63,11 @@ def power_laumio(laumios, state=False):
     client.on_message = on_message
     client.connect(adresseMpd, portMdp, keepAlive)
     color = [255, 255, 255] if state else [0, 0, 0]
-    for laumio in laumios:
-        client.publish("laumio/" + laumio + "/json", payload="{'command': 'fill', 'rgb': " + str(color) + "}")
+    if isinstance(laumios, list):
+        for laumio in laumios:
+            client.publish("laumio/" + laumio + "/json", payload="{'command': 'fill', 'rgb': " + str(color) + "}")
+    else:
+        client.publish("laumio/" + laumios + "/json", payload="{'command': 'fill', 'rgb': " + str(color) + "}")
 
 
 #client.publish("laumio/status/advertise")
