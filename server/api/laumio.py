@@ -67,11 +67,17 @@ def rainbowGroupe(laumios):
 
 # API - Remplissage couleur sur une lampe Laumio
 def fill(nom, couleur):
-    # Création et connexion du client
-    client = createClient()
-    client.connect(adresseMpd, portMdp, keepAlive)
-    # Exécution du script
-    client.publish("laumio/" + nom + "/json", payload="{'command': 'fill', 'rgb': " + couleur + "}")
+    try:
+        # Création et connexion du client
+        client = createClient()
+        client.connect(adresseMpd, portMdp, keepAlive)
+
+        color = [couleur["r"], couleur["g"], couleur["b"]]
+        # Exécution du script
+        print(nom + "{'command': 'fill', 'rgb': " + str(color) + "}")
+        client.publish("laumio/" + nom + "/json", payload="{'command': 'fill', 'rgb': " + str(color) + "}")
+    except Exception as e:
+        print(repr(e))
 
 
 # API - Remplissage couleur sur toutes les lampes
