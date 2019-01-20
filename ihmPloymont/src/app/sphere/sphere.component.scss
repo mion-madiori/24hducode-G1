@@ -1,17 +1,23 @@
-.sphere{
-    .thissphere{
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        border: 2px solid black;
-    }
+.sphere {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  padding: 10px;
+  height: 270px;
+  background-color: #fff;
 
-    .id, .color{
-        margin-top: 10px;
-        text-align: center;
-    }
+  .thissphere {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 2px solid black;
+  }
 
-    .id{
-        font-weight: bold;
-    }
+  .id,
+  .color {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .id {
+    font-weight: bold;
+  }
 }
