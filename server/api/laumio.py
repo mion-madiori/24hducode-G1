@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 
+
 adresseMpd = "mpd.lan"
 portMdp = 1883
 keepAlive = 60
@@ -40,6 +41,7 @@ def rainbow(nom):
 def rainbowAll():
     rainbow("all")
 
+
 # API - Animation arc-en-ciel sur une lampe Laumio
 def fill(nom, couleur):
     # Création et connexion du client
@@ -47,6 +49,18 @@ def fill(nom, couleur):
     client.connect(adresseMpd, portMdp, keepAlive)
     # Exécution du script
     client.publish("laumio/" + nom + "/fill")
+
+
+# API - Mise en route, ou non, d'une laumio
+def power_laumio(laumios, state=False):
+    client = createClient()
+    client.on_connect = on_connect
+    client.on_message = on_message
+    client.connect(adresseMpd, portMdp, keepAlive)
+    color = [255, 255, 255] if state else [0, 0, 0]
+    for laumio in laumios:
+        client.publish("laumio/" + laumio + "/json", payload="{'command': 'fill', 'rgb': " + str(color) + "}")
+
 
 #client.publish("laumio/status/advertise")
 
