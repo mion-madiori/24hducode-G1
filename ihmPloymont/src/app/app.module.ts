@@ -3,13 +3,15 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {ColorPickerModule} from 'ngx-color-picker';
 import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 import {
   MatInputModule,
   MatTabsModule,
   MatButtonModule,
   MatMenuModule,
-  MatIconModule
+  MatIconModule,
+  MatSelectModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,12 +21,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpService} from './service/http.service'
 import { LaumioListComponent } from './laumio-list/laumio-list.component';
 import { SphereComponent } from './sphere/sphere.component';
+import { AnimationComponent } from './animation/animation.component';
+import { MeteoComponent } from './meteo/meteo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LaumioListComponent,
-    SphereComponent
+    SphereComponent,
+    AnimationComponent,
+    MeteoComponent
   ],
   imports: [
     BrowserModule,
@@ -33,12 +39,14 @@ import { SphereComponent } from './sphere/sphere.component';
     HttpClientModule,
     ColorPickerModule,
     RouterModule,
+    FormsModule,
 
     MatInputModule,
     MatTabsModule,
     MatButtonModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

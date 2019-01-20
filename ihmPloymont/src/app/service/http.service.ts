@@ -11,6 +11,8 @@ export class HttpService {
   public API = '//localhost:5000';
   public LAUMIOS_API = this.API + '/api';
 
+  public IPMALO = 'http://10.110.6.164:5000/';
+
   constructor(private http: HttpClient) {
   }
 
@@ -23,7 +25,7 @@ export class HttpService {
   }
 
   powerOnLaumio(sphere: Sphere): Observable<any> {
-    return this.http.post('http://192.168.0.161:5000/fill', sphere);
+    return this.http.post(this.IPMALO + 'fill', sphere);
   }
 
   powerOffLaumio(name: string): Observable<any> {
@@ -38,8 +40,8 @@ export class HttpService {
     return this.http.get(this.API);
   }
 
-  getTest(): Observable<any> {
-    return this.http.get<any>('http://10.110.6.164:5000/');
+  getMeteo(ville: string): Observable<any> {
+    return this.http.post<any>(this.IPMALO + 'weather', {'city': ville});
   }
 
 }

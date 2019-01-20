@@ -3,7 +3,7 @@ export class Sphere {
     color?: RGB;
 }
 
-interface RGB {
+export interface RGB {
     r: number;
     g: number;
     b: number;

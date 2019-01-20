@@ -1,0 +1,13 @@
+<div class="meteo">
+  <div class="container">
+    <h1>Meteo</h1>
+    <mat-form-field>
+      <mat-select placeholder="Ville" [(ngModel)]='ville'>
+        <mat-option *ngFor="let ville of villes" [value]="ville">
+          {{ville}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)='valid()'>Valider</button>
+  </div>
+</div>

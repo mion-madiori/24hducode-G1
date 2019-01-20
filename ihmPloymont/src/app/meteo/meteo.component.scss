@@ -1,0 +1,17 @@
+.meteo{
+    margin-left: 100px;
+    .container{
+        h1{
+            text-align: center;
+        }
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        background-color: #fff;
+        width: 300px;
+        padding: 20px;
+        button{
+            margin-top: 10px;
+        }
+    }
+}
