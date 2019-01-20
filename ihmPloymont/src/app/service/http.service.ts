@@ -12,27 +12,31 @@ export class HttpService {
   public LAUMIOS_API = this.API + '/api/';
 
   constructor(private http: HttpClient) {
-   }
+  }
 
-   getAll(): Observable<any> {
-     return this.http.get(this.LAUMIOS_API + '/laumio/names');
-   }
+  getAll(): Observable<any> {
+    return this.http.get(this.LAUMIOS_API + '/laumio/names');
+  }
 
-   powerOnLaumio(sphere: Sphere): Observable<any> {
-      return this.http.post(this.LAUMIOS_API + '/' + sphere.name + 'powerOnLaumio', sphere.color);
-    }  
+  getAllMock(): Observable<any> {
+    return this.http.get('assets/test.json');
+  }
 
-    powerOffLaumio(name: string): Observable<any> {
-      return this.http.get(this.LAUMIOS_API + '/' + name + 'powerOffLaumio' );
-    } 
+  powerOnLaumio(sphere: Sphere): Observable<any> {
+    return this.http.post(this.LAUMIOS_API + '/' + sphere.name + 'powerOnLaumio', sphere.color);
+  }
 
-   changeColor(name : string) {
+  powerOffLaumio(name: string): Observable<any> {
+    return this.http.get(this.LAUMIOS_API + '/' + name + 'powerOffLaumio');
+  }
+
+  changeColor(name: string) {
     return this.http.get(this.LAUMIOS_API + '/' + name + '/fill');
-   }
+  }
 
-   getCapteur(): Observable<any> {
-    return this.http.get(this.API );
-   }
+  getCapteur(): Observable<any> {
+    return this.http.get(this.API);
+  }
 
 
 

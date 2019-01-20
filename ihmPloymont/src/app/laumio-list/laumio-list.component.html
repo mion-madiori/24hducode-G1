@@ -1,9 +1,7 @@
 <div class="laumolist">
-  <h2>Laumio List</h2>
-  
-  <div *ngFor="let laumio of laumios">
-    {{laumio.name}}
-  </div>
+  <h2>Liste Laumios</h2>
 
-  <app-sphere [id]="'premiere'"></app-sphere>
+  <div class="laumios">
+    <app-sphere *ngFor="let item of laumios" [id]="item.name" class="sphere"></app-sphere>
+  </div>
 </div>

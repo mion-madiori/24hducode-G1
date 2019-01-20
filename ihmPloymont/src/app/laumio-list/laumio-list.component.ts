@@ -11,21 +11,21 @@ import { Sphere } from '../model/sphere';
 })
 export class LaumioListComponent implements OnInit {
 
-  laumios: Array<any>;
+  laumios: Array<Sphere>;
   laumio: Laumio;
-  checkPower : boolean;
+  checkPower: boolean;
 
   sub: Subscription;
 
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
-    this.httpService.getAll().subscribe(data => {
-      this.laumios = data;
-      console.log(data);      
-    })
+    this.httpService.getAllMock().subscribe(data => {
+      console.log(data);
+      this.laumios = data.sphere;
+    });
   }
-  
+
   powerOnLaumio(name: Sphere) {
     this.httpService.powerOnLaumio(name).subscribe(error => {
       console.error(error);
@@ -38,7 +38,7 @@ export class LaumioListComponent implements OnInit {
     })
   }
 
-  changeColor(name: string ) {
+  changeColor(name: string) {
     this.httpService.changeColor(name)
   }
 }
