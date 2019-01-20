@@ -1,13 +1,29 @@
-from flask import render_template, Flask
-from flask_cors import CORS, cross_origin
-from flask_restful import Resource, Api
+from flask import render_template, request, jsonify
 import connexion
+from api.laumio import *
+
 
 # Création de l'instance de l'application
 app = connexion.App(__name__, specification_dir='./')
 
 # Lecture du fichier swagger.yml pour configurer les endpoints
-app.add_api('swagger.yml')
+# app.add_api('swagger.yml')
+
+
+@app.route('/')
+def hello():
+    return jsonify({'success': True})
+
+
+@app.route('/rainbow')
+def rainboww():
+    rainbow(request)
+
+
+@app.route('/rainbows')
+def rainbows():
+    rainbowAll()
+
 
 # Création d'une route URl dans l'application pour "/"
 @app.route('/')
