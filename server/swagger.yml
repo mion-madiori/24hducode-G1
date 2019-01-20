@@ -67,3 +67,47 @@ paths:
           description: "Animation success"
           schema:
             type: "string"
+  ## FONCTION : FILL #########################
+  # fill All
+  /laumio/all/fill:
+    post:
+      operationId: "api.laumio.fillAll"
+      tags:
+        - "Laumio"
+      summary: "Lampe Laumio à leds multiples"
+      description: "Remplissage avec une couleur sur toutes les lampes Laumios"
+      parameters:
+        - name: couleur
+          in: body
+          description: Couleur RGB à afficher dans les Laumios, au format {couleur = [R, G, B]} dans JSon
+          type: array
+          required: True
+      responses:
+        200:
+          description: "Fill success"
+          schema:
+            type: "string"
+  # fill One
+  /laumio/{nom}/fill:
+    post:
+      operationId: "api.laumio.fill"
+      tags:
+        - "Laumio"
+      summary: "Lampe Laumio à leds multiples"
+      description: "Remplissage avec une couleur sur une lampe Laumio"
+      parameters:
+        - name: nom
+          in: path
+          description: Nom de la lampe Laumio à remplir
+          type: string
+          required: True
+        - name: couleur
+          in: body
+          description: Couleur RGB à afficher dans les Laumios, au format {couleur = [R, G, B]} dans JSon
+          type: array
+          required: True
+      responses:
+        200:
+          description: "Fill success"
+          schema:
+            type: "string"

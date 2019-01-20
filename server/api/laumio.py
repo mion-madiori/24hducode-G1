@@ -40,13 +40,17 @@ def rainbow(nom):
 def rainbowAll():
     rainbow("all")
 
-# API - Animation arc-en-ciel sur une lampe Laumio
+# API - Remplissage couleur sur une lampe Laumio
 def fill(nom, couleur):
     # Création et connexion du client
     client = createClient()
     client.connect(adresseMpd, portMdp, keepAlive)
     # Exécution du script
-    client.publish("laumio/" + nom + "/fill")
+    client.publish("laumio/" + nom + "/json", payload="{'command': 'fill', 'rgb': " + couleur + "}")
+
+# API - Remplissage couleur sur toutes les lampes
+def fillAll(couleur):
+    fill("all", couleur)
 
 #client.publish("laumio/status/advertise")
 
