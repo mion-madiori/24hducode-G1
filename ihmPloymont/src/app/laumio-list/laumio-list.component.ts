@@ -29,16 +29,22 @@ export class LaumioListComponent implements OnInit {
   powerOnLaumio(name: Sphere) {
     this.httpService.powerOnLaumio(name).subscribe(error => {
       console.error(error);
-    })
+    });
   }
 
   powerOffLaumio(name: string) {
     this.httpService.powerOffLaumio(name).subscribe(error => {
       console.error(error);
-    })
+    });
   }
 
   changeColor(name: string) {
     this.httpService.changeColor(name)
+  }
+
+  testapi() {
+    this.httpService.getTest().subscribe(data => {
+      console.log(data);
+    });
   }
 }

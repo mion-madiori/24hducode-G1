@@ -38,6 +38,8 @@ export class HttpService {
     return this.http.get(this.API);
   }
 
-
+  getTest(): Observable<any> {
+    return this.http.get<any>('http://10.110.6.164:5000/');
+  }
 
 }
