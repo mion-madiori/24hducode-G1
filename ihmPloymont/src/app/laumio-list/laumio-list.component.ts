@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../service/http.service';
 import { Subscription } from 'rxjs';
 import { Laumio } from '../model/laumio';
+import { Sphere } from '../model/sphere';
 
 @Component({
   selector: 'app-laumio-list',
@@ -25,7 +26,7 @@ export class LaumioListComponent implements OnInit {
     })
   }
   
-  powerOnLaumio(name: string) {
+  powerOnLaumio(name: Sphere) {
     this.httpService.powerOnLaumio(name).subscribe(error => {
       console.error(error);
     })

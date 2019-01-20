@@ -1,5 +1,5 @@
 export class Sphere {
-    id: string;
+    name: string;
     color?: RGB;
 }
 

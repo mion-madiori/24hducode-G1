@@ -18,8 +18,8 @@ export class HttpService {
      return this.http.get(this.LAUMIOS_API + '/laumio/names');
    }
 
-   powerOnLaumio(name: string, color: Sphere): Observable<any> {
-      return this.http.post(this.LAUMIOS_API + '/' + name + 'powerOnLaumio', color);
+   powerOnLaumio(sphere: Sphere): Observable<any> {
+      return this.http.post(this.LAUMIOS_API + '/' + sphere.name + 'powerOnLaumio', sphere.color);
     }  
 
     powerOffLaumio(name: string): Observable<any> {
