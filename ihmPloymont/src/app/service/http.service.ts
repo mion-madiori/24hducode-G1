@@ -8,28 +8,22 @@ import { Observable } from 'rxjs';
 export class HttpService {
 
   public API = '//localhost:5000';
-  public LAUMIOS_API = this.API + '/api/laumio';
+  public LAUMIOS_API = this.API + '/api/';
 
   constructor(private http: HttpClient) {
    }
 
    getAll(): Observable<any> {
-     return this.http.get(this.LAUMIOS_API + '/all/rainbow');
+     return this.http.get(this.LAUMIOS_API + '/all/');
    }
 
-   getByName(name: string) {
-     return this.http.get(this.LAUMIOS_API + '/' + name);
-   }  
-
-   powerLaumio(laumio: any): Observable<any> {
-    let result: Observable<Object>;
-    if (laumio['href']) {
-      result = this.http.put(laumio.href, laumio);
-    } else {
-      result = this.http.post(this.LAUMIOS_API, laumio);
-    }
-    return result;
+   powerOnLaumio(name: string): Observable<any> {
+      return this.http.get(this.LAUMIOS_API + '/' + name + 'powerOnLaumio' );
     }  
+
+    powerOffLaumio(name: string): Observable<any> {
+      return this.http.get(this.LAUMIOS_API + '/' + name + 'powerOffLaumio' );
+    } 
 
    changeColor(name : string) {
     return this.http.get(this.LAUMIOS_API + '/' + name + '/fill');

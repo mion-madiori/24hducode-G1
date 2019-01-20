@@ -111,3 +111,16 @@ paths:
           description: "Fill success"
           schema:
             type: "string"
+  # All Laumios
+  /laumio/names:
+    get:
+      operationId: "api.laumio.allLaumios"
+      tags:
+        - "Laumio"
+      summary: "Lampe Laumio à leds multiples"
+      description: "Retourne les noms des Laumios"
+      responses:
+        200:
+          description: "Récupération success"
+          schema:
+            type: "string"

@@ -1,6 +1,5 @@
 import paho.mqtt.client as mqtt
 
-
 def pseudo_byte_to_int(byte_value):
     str_value = ""
 
