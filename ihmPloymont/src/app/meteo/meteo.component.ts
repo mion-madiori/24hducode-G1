@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../service/http.service';
 
 @Component({
   selector: 'app-meteo',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MeteoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private http: HttpService
+  ) { }
 
   villes = ['Paris', 'Nantes', 'Lille', 'Marseille', 'Strasbourg', 'Montpellier'];
   ville: string = '';
@@ -16,7 +19,10 @@ export class MeteoComponent implements OnInit {
 
   valid() {
     console.log(this.ville);
+    this.http.getMeteo(this.ville).subscribe(data => {
+      console.log(data);
 
+    })
   }
 
 }

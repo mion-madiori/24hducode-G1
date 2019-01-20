@@ -11,7 +11,7 @@ export class HttpService {
   public API = '//localhost:5000';
   public LAUMIOS_API = this.API + '/api';
 
-  public IPMALO = 'http://10.110.6.164:5000/';
+  public IPMALO = 'http://192.168.0.161:5000/';
 
   constructor(private http: HttpClient) {
   }
