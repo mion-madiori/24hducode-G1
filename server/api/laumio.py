@@ -56,11 +56,53 @@ def fill(nom, couleur):
     client.publish("laumio/" + nom + "/fill")
 
 
+# API - Coloration d'une led spécifique d'une laumio
+def set_pixel(laumios, n_led, color):
+    client = createClient()
+    client.connect(adresseMpd, portMdp, keepAlive)
+    if isinstance(laumios, list):
+        for laumio in laumios:
+            client.publish("laumio/" + laumio + "/json", payload="{'command': 'set_pixel', 'led': " + n_led + ", 'rgb': " + str(color) + "}")
+    else:
+        client.publish("laumio/" + laumios + "/json", payload="{'command': 'set_pixel', 'led': " + n_led + ", 'rgb': " + str(color) + "}")
+
+
+# API - Coloration d'un anneau spécifique d'une laumio
+def set_ring(laumios, n_ring, color):
+    client = createClient()
+    client.connect(adresseMpd, portMdp, keepAlive)
+    if isinstance(laumios, list):
+        for laumio in laumios:
+            client.publish("laumio/" + laumio + "/json", payload="{'command': 'set_ring', 'ring': " + n_ring + ", 'rgb': " + str(color) + "}")
+    else:
+        client.publish("laumio/" + laumios + "/json", payload="{'command': 'set_ring', 'ring': " + n_ring + ", 'rgb': " + str(color) + "}")
+
+
+# API - Coloration d'une colonne spécifique d'une laumio
+def set_column(laumios, n_column, color):
+    client = createClient()
+    client.connect(adresseMpd, portMdp, keepAlive)
+    if isinstance(laumios, list):
+        for laumio in laumios:
+            client.publish("laumio/" + laumio + "/json", payload="{'command': 'set_column', 'column': " + n_column + ", 'rgb': " + str(color) + "}")
+    else:
+        client.publish("laumio/" + laumios + "/json", payload="{'command': 'set_column', 'column': " + n_column + ", 'rgb': " + str(color) + "}")
+
+
+# API - Coloration d'une laumio avec timeout
+def color_wipe(laumios, delta, color):
+    client = createClient()
+    client.connect(adresseMpd, portMdp, keepAlive)
+    if isinstance(laumios, list):
+        for laumio in laumios:
+            client.publish("laumio/" + laumio + "/json", payload="{'command': 'color_wipe', 'duration': " + delta + ", 'rgb': " + str(color) + "}")
+    else:
+        client.publish("laumio/" + laumios + "/json", payload="{'command': 'color_wipe', 'duration': " + delta + ", 'rgb': " + str(color) + "}")
+
+
 # API - Mise en route, ou non, d'une laumio
 def power_laumio(laumios, state=False):
     client = createClient()
-    client.on_connect = on_connect
-    client.on_message = on_message
     client.connect(adresseMpd, portMdp, keepAlive)
     color = [255, 255, 255] if state else [0, 0, 0]
     if isinstance(laumios, list):
