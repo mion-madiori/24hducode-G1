@@ -1,4 +1,6 @@
-from flask import render_template
+from flask import render_template, Flask
+from flask_cors import CORS, cross_origin
+from flask_restful import Resource, Api
 import connexion
 
 # Création de l'instance de l'application

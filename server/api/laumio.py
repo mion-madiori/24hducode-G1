@@ -60,14 +60,15 @@ def fillAll(couleur):
 
 # API - Récupération de toutes les laumios
 def allLaumios():
-    client = createClient()
-    client.subscribe("laumio/status/advertise")
-    client.publish("laumio/all/discover")
-    time.sleep(1)
-    client.unsubscribe("laumio/status/advertise")
-    client.disconnect()
+    #client = createClient()
+    #client.subscribe("laumio/status/advertise")
+    #client.publish("laumio/all/discover")
+    #time.sleep(1)
+    #client.unsubscribe("laumio/status/advertise")
+    #client.disconnect()
     # on récupère les laumios
-    return laumios.keys()
+    #return laumios.keys()
+    return 'test'
 
 # API - Coloration d'une led spécifique d'une laumio
 def set_pixel(laumios, n_led, color):

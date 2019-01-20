@@ -11,7 +11,7 @@ import { Sphere } from '../model/sphere';
 })
 export class LaumioListComponent implements OnInit {
 
-  laumios: Array<any>;
+  laumios: Array<Laumio>;
   laumio: Laumio;
   checkPower : boolean;
 

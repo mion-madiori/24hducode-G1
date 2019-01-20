@@ -9,7 +9,7 @@ import { Sphere } from '../model/sphere';
 export class HttpService {
 
   public API = '//localhost:5000';
-  public LAUMIOS_API = this.API + '/api/';
+  public LAUMIOS_API = this.API + '/api';
 
   constructor(private http: HttpClient) {
    }
