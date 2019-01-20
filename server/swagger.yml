@@ -173,6 +173,6 @@ paths:
       description: "Retourne les noms des Laumios"
       responses:
         200:
-          description: "Récupération success"
+          description: "Animation success"
           schema:
             type: "string"

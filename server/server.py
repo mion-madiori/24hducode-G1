@@ -1,7 +1,6 @@
 from flask import render_template, request, jsonify
 import connexion
 from api.laumio import *
-import json
 
 
 # Création de l'instance de l'application
