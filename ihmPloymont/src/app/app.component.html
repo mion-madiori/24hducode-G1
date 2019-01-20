@@ -1,7 +1,15 @@
 <div class="header">
   <img src="assets/logo/logohd.jpg">
   <h1>Welcome to {{title}}!</h1>
-  <div></div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="[ '/basique']">Basique</button>
+      <button mat-menu-item>Animation</button>
+    </mat-menu>
+  </div>
 </div>
 
-<app-laumio-list></app-laumio-list>
+<router-outlet></router-outlet>

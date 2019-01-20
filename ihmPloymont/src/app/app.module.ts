@@ -2,10 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {ColorPickerModule} from 'ngx-color-picker';
+import {RouterModule} from '@angular/router';
 
 import {
-  MatInputModule
-} from '@angular/material/input';
+  MatInputModule,
+  MatTabsModule,
+  MatButtonModule,
+  MatMenuModule,
+  MatIconModule
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,8 +32,13 @@ import { SphereComponent } from './sphere/sphere.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ColorPickerModule,
+    RouterModule,
 
-    MatInputModule
+    MatInputModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
