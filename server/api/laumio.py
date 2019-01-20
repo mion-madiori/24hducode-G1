@@ -50,11 +50,11 @@ def rainbow(nom):
 
 # API - Animation arc-en-ciel sur toutes les lampes
 def rainbowAll():
-    rainbowGroupe("all")
+    rainbowGroup("all")
 
 
 # API - Animation arc-en-ciel sur une ou plusieurs lampes Laumio
-def rainbowGroupe(laumios):
+def rainbowGroup(laumios):
     client = createClient()
     client.connect(adresseMpd, portMdp, keepAlive)
 
@@ -72,7 +72,7 @@ def fill(nom, couleur):
         client = createClient()
         client.connect(adresseMpd, portMdp, keepAlive)
 
-        color = [couleur["r"], couleur["g"], couleur["b"]]
+        color = [couleur["r"], couleur["g"], couleur["b"]] if not isinstance(couleur, list) else couleur
         # Exécution du script
         print(nom + "{'command': 'fill', 'rgb': " + str(color) + "}")
         client.publish("laumio/" + nom + "/json", payload="{'command': 'fill', 'rgb': " + str(color) + "}")
