@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sphere } from '../model/sphere';
+import { HttpService } from '../service/http.service';
 
 @Component({
   selector: 'app-sphere',
@@ -12,15 +13,25 @@ export class SphereComponent implements OnInit {
   sphere: Sphere;
   currentColor = null;
 
-  constructor() { }
+  constructor(
+    private httpService: HttpService
+  ) { }
 
   ngOnInit() {
   }
 
   onColorChange(ev) {
     this.currentColor = this.hexToRgb(ev);
-    console.log(this.hexToRgb(ev));
-
+    this.sphere = {
+      name: this.id,
+      color: {
+        r: this.currentColor.r,
+        g: this.currentColor.g,
+        b: this.currentColor.b
+      }
+    };
+    console.log(this.sphere);
+    this.httpService.powerOnLaumio(this.sphere);
   }
 
   private hexToRgb(hex) {
