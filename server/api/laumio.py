@@ -50,11 +50,11 @@ def rainbow(nom):
 
 # API - Animation arc-en-ciel sur toutes les lampes
 def rainbowAll():
-    rainbowGroupe("all")
+    rainbowGroup("all")
 
 
 # API - Animation arc-en-ciel sur une ou plusieurs lampes Laumio
-def rainbowGroupe(laumios):
+def rainbowGroup(laumios):
     client = createClient()
     client.connect(adresseMpd, portMdp, keepAlive)
 
