@@ -41,10 +41,4 @@ export class LaumioListComponent implements OnInit {
   changeColor(name: string) {
     this.httpService.changeColor(name)
   }
-
-  testapi() {
-    this.httpService.getTest().subscribe(data => {
-      console.log(data);
-    });
-  }
 }
