@@ -1,4 +1,5 @@
 import paho.mqtt.client as mqtt
+from flask import *
 import time
 
 
@@ -11,9 +12,11 @@ laumios = {}
 # FONCTION GENERIQUE #
 ######################
 
+
 # Fonction d'écoute après connexion
 def on_connect(client, user_data, flags, rc):
     print("Successfully connected with result code" + str(rc))
+
 
 # Fonction d'écoute des messages
 def on_message(client, userdata, msg):
@@ -21,6 +24,7 @@ def on_message(client, userdata, msg):
     # Pour discover
     if(msg.topic=="laumio/all/discover"):
         laumios[msg.payload]=""
+
 
 # Fonction de connexion avec retour client
 def createClient():
@@ -33,9 +37,21 @@ def createClient():
 # FONCTIONS d'API #
 ###################
 
+
+# API - Animation arc-en-ciel sur une lampe Laumio
+
+def rainbow(nom):
+    # Création et connexion du client
+    client = createClient()
+    client.connect(adresseMpd, portMdp, keepAlive)
+    # Exécution du script
+    client.publish("laumio/" + nom + "/animate_rainbow")
+    
+
 # API - Animation arc-en-ciel sur toutes les lampes
 def rainbowAll():
     rainbowGroup("all")
+
 
 # API - Animation arc-en-ciel sur une ou plusieurs lampes Laumio
 def rainbowGroup(laumios):
@@ -48,6 +64,7 @@ def rainbowGroup(laumios):
     else:
         client.publish("laumio/" + laumios + "/animate_rainbow")
 
+
 # API - Remplissage couleur sur une lampe Laumio
 def fill(nom, couleur):
     # Création et connexion du client
@@ -56,30 +73,24 @@ def fill(nom, couleur):
     # Exécution du script
     client.publish("laumio/" + nom + "/json", payload="{'command': 'fill', 'rgb': " + couleur + "}")
 
-def fillGroup(laumios):
-    client = createClient()
-    client.connect(adresseMpd, portMdp, keepAlive)
-
-    if isinstance(laumios, list):
-        for laumio in laumios:
-            client.publish("laumio/" + laumio.name + "/json", payload="{'command': 'fill', 'rgb': " + laumio.couleur + "}")
-    else:
-        client.publish("laumio/" + laumios.name + "/json", payload="{'command': 'fill', 'rgb': " + laumios.couleur + "}")
 
 # API - Remplissage couleur sur toutes les lampes
 def fillAll(couleur):
     fill("all", couleur)
 
+
 # API - Récupération de toutes les laumios
 def allLaumios():
-    client = createClient()
-    client.subscribe("laumio/status/advertise")
-    client.publish("laumio/all/discover")
-    time.sleep(1)
-    client.unsubscribe("laumio/status/advertise")
-    client.disconnect()
+    #client = createClient()
+    #client.subscribe("laumio/status/advertise")
+    #client.publish("laumio/all/discover")
+    #time.sleep(1)
+    #client.unsubscribe("laumio/status/advertise")
+    #client.disconnect()
     # on récupère les laumios
-    return laumios.keys()
+    #return laumios.keys()
+    return 'test'
+
 
 # API - Coloration d'une led spécifique d'une laumio
 def set_pixel(laumios, n_led, color):

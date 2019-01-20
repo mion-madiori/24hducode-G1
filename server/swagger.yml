@@ -155,9 +155,7 @@ paths:
         200:
           description: "Fill success"
           schema:
-            type: "string"
-
-            type: object
+            type: string
           properties:
               nom:
                 type: string
@@ -177,6 +175,6 @@ paths:
       description: "Retourne les noms des Laumios"
       responses:
         200:
-          description: "Récupération success"
+          description: "Animation success"
           schema:
             type: "string"
