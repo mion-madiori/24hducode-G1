@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Sphere } from '../model/sphere';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,11 @@ export class HttpService {
    }
 
    getAll(): Observable<any> {
-     return this.http.get(this.LAUMIOS_API + '/all/');
+     return this.http.get(this.LAUMIOS_API + '/laumio/names');
    }
 
-   powerOnLaumio(name: string): Observable<any> {
-      return this.http.get(this.LAUMIOS_API + '/' + name + 'powerOnLaumio' );
+   powerOnLaumio(name: string, color: Sphere): Observable<any> {
+      return this.http.post(this.LAUMIOS_API + '/' + name + 'powerOnLaumio', color);
     }  
 
     powerOffLaumio(name: string): Observable<any> {
